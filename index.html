@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>마오타이 파나마 금상 기념주 | MOUTAI 1915</title>
+<meta name="description" content="1915년 파나마 만국박람회 금상. 마오타이 파나마 금상 기념주를 소개합니다. 장향형 53도, 백 년의 이름을 한 병에." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0a0d0a;
+    --ink-2:#10150f;
+    --moss:#182519;
+    --moss-2:#223326;
+    --gold:#c9a35c;
+    --gold-2:#e9cf98;
+    --gold-dim:rgba(201,163,92,.34);
+    --red:#7c1c1e;
+    --red-2:#5c1416;
+    --paper:#f5f0e5;
+    --paper-2:#eae2d1;
+    --body:#3c4038;
+    --muted:#8b8779;
+    --serif:"Noto Serif KR","Songti SC",serif;
+    --sans:"Noto Sans KR",-apple-system,"Malgun Gothic",sans-serif;
+    --display:"Cormorant Garamond","Noto Serif KR",serif;
+    --pad:clamp(78px,11vw,150px);
+    --ease:cubic-bezier(.22,.68,.16,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--ink);color:var(--paper);
+    font-family:var(--sans);font-weight:300;line-height:1.75;
+    -webkit-font-smoothing:antialiased;letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold);color:#111}
+
+  /* ---------- shared ---------- */
+  .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+  .section{padding:var(--pad) 0;position:relative;scroll-margin-top:76px}
+  .dark{background:var(--ink);color:var(--paper)}
+  .dark-2{background:var(--ink-2);color:var(--paper)}
+  .light{background:var(--paper);color:var(--ink)}
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-family:var(--sans);font-size:11px;font-weight:500;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+    margin:0 0 26px;
+  }
+  .eyebrow::before{content:"";width:38px;height:1px;background:var(--gold-dim)}
+  .light .eyebrow{color:#96743a}
+  .light .eyebrow::before{background:rgba(150,116,58,.4)}
+  h2{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(30px,4.2vw,52px);line-height:1.32;
+    letter-spacing:-.01em;margin:0 0 26px;
+  }
+  .lede{
+    font-family:var(--serif);font-weight:400;font-size:clamp(16px,1.5vw,19px);
+    line-height:1.95;color:#c9c6b8;max-width:56ch;margin:0 0 20px;
+  }
+  .light .lede{color:#4a4d43}
+  p{margin:0 0 18px;font-size:clamp(14px,1.15vw,15.5px);color:#a8a595;max-width:58ch}
+  .light p{color:var(--body)}
+  .accent{color:var(--gold-2);font-family:var(--serif)}
+  .light .accent{color:#96743a}
+  .cn{font-family:var(--serif);letter-spacing:.14em;font-size:12px;color:var(--muted)}
+
+  .figure{position:relative;background:linear-gradient(150deg,#1d2a20,#0c120d);overflow:hidden}
+  .figure img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(.92) contrast(1.02);
+    transform:scale(1.13);transform-origin:50% 18%;
+  }
+  .figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,13,10,.05),rgba(10,13,10,.42));pointer-events:none}
+  .frame{position:relative}
+  .frame::before{
+    content:"";position:absolute;inset:-14px -14px 14px 14px;
+    border:1px solid var(--gold-dim);pointer-events:none;
+  }
+  .light .frame::before{border-color:rgba(150,116,58,.35)}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.12s}
+  .reveal.d2{transition-delay:.24s}
+  .reveal.d3{transition-delay:.36s}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed;inset:0 0 auto;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,52px);
+    transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease,border-color .4s;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{
+    background:rgba(8,11,8,.82);backdrop-filter:blur(14px);
+    padding:14px clamp(20px,5vw,52px);border-bottom-color:rgba(201,163,92,.16);
+  }
+  .brand{display:flex;align-items:baseline;gap:12px;font-family:var(--display);letter-spacing:.18em}
+  .brand b{font-size:22px;font-weight:600;letter-spacing:.24em;color:var(--paper)}
+  .brand span{font-size:10px;letter-spacing:.3em;color:var(--gold);font-family:var(--sans)}
+  .nav-links{display:flex;gap:32px;font-size:12px;letter-spacing:.16em;color:#b9b5a6}
+  .nav-links a{position:relative;padding-bottom:4px;transition:color .3s}
+  .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--gold);transition:right .4s var(--ease)}
+  .nav-links a:hover{color:var(--gold-2)}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{
+    font-size:11px;letter-spacing:.2em;padding:11px 22px;
+    border:1px solid var(--gold-dim);color:var(--gold-2);
+    transition:background .35s,border-color .35s,color .35s;
+  }
+  .nav-cta:hover{background:var(--gold);border-color:var(--gold);color:#14180f}
+  @media (max-width:900px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100svh;display:flex;align-items:center;
+    padding:150px 0 80px;overflow:hidden;
+    background:
+      radial-gradient(120% 80% at 78% 45%,rgba(201,163,92,.13),transparent 58%),
+      radial-gradient(90% 70% at 12% 8%,rgba(38,64,44,.55),transparent 62%),
+      linear-gradient(160deg,#0d120d 0%,#0a0d0a 55%,#080a08 100%);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:repeating-linear-gradient(90deg,rgba(201,163,92,.055) 0 1px,transparent 1px 96px);
+    mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+  }
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}
+  .hero-eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:11px;letter-spacing:.26em;color:var(--gold);margin-bottom:32px}
+  .hero-eyebrow i{width:5px;height:5px;background:var(--gold);border-radius:50%;display:block}
+  h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(40px,6.4vw,84px);line-height:1.22;letter-spacing:-.02em;
+    margin:0 0 30px;
+  }
+  h1 .gold{
+    display:inline-block;
+    background:linear-gradient(100deg,#f4e2b6,#c9a35c 42%,#f2ddaa 66%,#a88340);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{font-family:var(--serif);font-size:clamp(15px,1.4vw,17.5px);line-height:1.95;color:#b7b3a4;max-width:44ch;margin-bottom:32px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-bottom:42px}
+  .hero-meta span{font-size:11px;letter-spacing:.2em;color:#8f8b7d;position:relative;padding-left:14px}
+  .hero-meta span::before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;background:var(--gold-dim)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:12px;
+    padding:16px 32px;font-size:12px;letter-spacing:.18em;
+    transition:transform .35s var(--ease),background .35s,color .35s,border-color .35s;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:#14180f}
+  .btn-gold:hover{background:var(--gold-2)}
+  .btn-ghost{border:1px solid rgba(244,240,229,.26);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+
+  /* bottle illustration */
+  .stage{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:560px}
+  .glow{
+    position:absolute;left:50%;bottom:-10%;width:min(90%,560px);aspect-ratio:1;
+    transform:translateX(-50%);
+    background:radial-gradient(circle,rgba(201,163,92,.3),rgba(201,163,92,.08) 42%,transparent 68%);
+    filter:blur(10px);
+  }
+  .ring{
+    position:absolute;left:50%;bottom:9%;width:min(82%,430px);aspect-ratio:1;
+    transform:translateX(-50%);border-radius:50%;
+    border:1px solid rgba(201,163,92,.22);
+  }
+  .ring.r2{width:min(94%,500px);bottom:4%;border-color:rgba(201,163,92,.1)}
+  .ring.r3{
+    width:min(70%,360px);bottom:14%;border-style:dashed;border-color:rgba(201,163,92,.16);
+    animation:spin 70s linear infinite;
+  }
+  @keyframes spin{to{transform:translateX(-50%) rotate(360deg)}}
+  .bottle{
+    position:relative;z-index:3;width:172px;
+    filter:drop-shadow(0 44px 54px rgba(0,0,0,.62));
+    animation:float 7s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .cap{
+    width:58px;height:26px;margin:0 auto;border-radius:5px 5px 1px 1px;
+    background:linear-gradient(180deg,#f2ddaa,#c9a35c 40%,#7d6029);
+    box-shadow:inset 0 -4px 8px rgba(0,0,0,.25);
+  }
+  .cap::after{content:"";display:block;height:1px;width:100%;margin-top:12px;background:rgba(0,0,0,.28)}
+  .neck{
+    width:48px;height:96px;margin:0 auto;
+    background:linear-gradient(90deg,#080d09,#26362a 18%,#415a47 30%,#1a271d 52%,#0a110b 72%,#26362a 90%,#0b120c 100%);
+  }
+  .body{
+    position:relative;height:314px;
+    border-radius:12px 12px 30px 30px / 16px 16px 44px 44px;
+    background:linear-gradient(90deg,#070c08 0%,#1e2d24 14%,#3a5340 26%,#283b2f 38%,#101c14 54%,#0a120c 68%,#2c4033 84%,#0d1710 100%);
+    box-shadow:inset 0 0 46px rgba(0,0,0,.72),inset 0 -40px 70px rgba(0,0,0,.55);
+    overflow:hidden;
+  }
+  .body::before{
+    content:"";position:absolute;left:24px;top:20px;width:13px;height:250px;
+    border-radius:12px;transform:rotate(1.5deg);
+    background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.03));
+    filter:blur(3px);
+  }
+  .body::after{
+    content:"";position:absolute;right:22px;top:60px;width:6px;height:190px;
+    border-radius:6px;background:linear-gradient(180deg,transparent,rgba(201,163,92,.28),transparent);
+    filter:blur(2px);
+  }
+  .label{
+    position:absolute;left:50%;top:78px;transform:translateX(-50%);
+    width:116px;padding:18px 0 16px;text-align:center;
+    background:linear-gradient(165deg,#f7efdb,#e2d5b6 70%,#cec0a0);
+    color:#1c2a1e;border:1px solid rgba(201,163,92,.85);
+    box-shadow:0 3px 14px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.35);
+  }
+  .label .y{display:block;font-family:var(--display);font-size:26px;font-weight:600;letter-spacing:.06em;line-height:1}
+  .label .ln{display:block;width:34px;height:1px;margin:9px auto;background:#a8863f}
+  .label .mt{display:block;font-family:var(--display);font-size:11px;letter-spacing:.26em;font-weight:600}
+  .label .kr{display:block;font-family:var(--sans);font-size:8px;letter-spacing:.12em;margin-top:6px;color:#5d5a3f}
+  .bottle-base{
+    width:180px;height:10px;margin:-4px auto 0;border-radius:50%;
+    background:radial-gradient(ellipse,rgba(0,0,0,.7),transparent 70%);
+    filter:blur(3px);
+  }
+  .scroll-cue{
+    position:absolute;left:clamp(20px,5vw,52px);bottom:34px;
+    display:flex;align-items:center;gap:12px;font-size:10px;letter-spacing:.24em;color:#7d7a6d;
+  }
+  .scroll-cue i{display:block;width:1px;height:44px;background:linear-gradient(180deg,var(--gold),transparent);animation:cue 2.4s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .stage{min-height:430px;order:2;transform:scale(.9)}
+    .bottle{width:148px}
+    .body{height:270px}
+    .label{top:64px;width:102px}
+    .scroll-cue{display:none}
+    .hero{padding-top:130px}
+  }
+
+  /* ---------- story ---------- */
+  .split{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(36px,6vw,84px);align-items:center}
+  @media (max-width:900px){.split{grid-template-columns:1fr}}
+  .story-fig{aspect-ratio:4/4.4;min-height:380px}
+  .caption{
+    display:flex;justify-content:space-between;gap:20px;margin-top:18px;
+    font-size:10.5px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;
+  }
+  .light .caption{color:#8a8574}
+  .stat-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    margin-top:clamp(50px,7vw,86px);background:rgba(150,116,58,.22);
+    border-top:1px solid rgba(150,116,58,.22);border-bottom:1px solid rgba(150,116,58,.22);
+  }
+  .light .stat-row{background:rgba(150,116,58,.2);border-color:rgba(150,116,58,.24)}
+  .stat{background:var(--paper);padding:34px 22px 30px}
+  .stat b{
+    display:block;font-family:var(--display);font-size:clamp(34px,3.6vw,46px);
+    font-weight:500;color:#8d6c33;line-height:1;margin-bottom:12px;
+  }
+  .stat span{font-size:11px;letter-spacing:.16em;color:#6d6957}
+  @media (max-width:720px){
+    .stat-row{grid-template-columns:repeat(2,1fr)}
+    .stat{padding:26px 18px}
+  }
+
+  /* ---------- craft ---------- */
+  .craft-head{max-width:720px;margin-bottom:clamp(44px,6vw,72px)}
+  .craft-body{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(34px,6vw,80px);align-items:start}
+  .craft-fig{aspect-ratio:3/4;min-height:420px}
+  @media (max-width:900px){.craft-body{grid-template-columns:1fr}.craft-fig{aspect-ratio:4/3;min-height:0}}
+  .steps{list-style:none;margin:0;padding:0}
+  .step{
+    display:grid;grid-template-columns:52px 1fr;gap:18px;
+    padding:26px 0;border-top:1px solid rgba(201,163,92,.16);
+  }
+  .step:last-child{border-bottom:1px solid rgba(201,163,92,.16)}
+  .step b{
+    font-family:var(--display);font-size:26px;font-weight:400;color:var(--gold);
+    line-height:1.1;padding-top:2px;
+  }
+  .step h3{margin:0 0 8px;font-family:var(--serif);font-size:clamp(17px,1.6vw,20px);font-weight:600;letter-spacing:.01em}
+  .step p{margin:0;font-size:13.5px;color:#9b9789;max-width:46ch}
+  .step em{display:block;font-style:normal;font-size:10.5px;letter-spacing:.2em;color:#7d786a;margin-top:8px}
+
+  /* ---------- enjoy ---------- */
+  .enjoy-head{text-align:center;max-width:760px;margin:0 auto clamp(44px,6vw,70px)}
+  .enjoy-head .eyebrow{justify-content:center}
+  .enjoy-head .eyebrow::before{display:none}
+  .enjoy-head p{margin-inline:auto}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(150,116,58,.22);border:1px solid rgba(150,116,58,.18)}
+  .card{background:var(--paper);padding:38px 26px 34px;position:relative;transition:background .4s,transform .4s var(--ease)}
+  .card:hover{background:#fbf7ee;transform:translateY(-4px)}
+  .card .n{
+    font-family:var(--display);font-size:13px;letter-spacing:.24em;color:#a78544;
+    display:flex;align-items:center;gap:10px;margin-bottom:26px;
+  }
+  .card .n::after{content:"";flex:1;height:1px;background:rgba(150,116,58,.25)}
+  .card h3{margin:0 0 12px;font-family:var(--serif);font-size:20px;font-weight:600;color:#1d231a}
+  .card p{font-size:13.5px;color:#5a5c50;margin:0;line-height:1.8}
+  .card .hint{display:block;margin-top:14px;font-family:var(--display);font-size:15px;letter-spacing:.1em;color:#a78544}
+  @media (max-width:940px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.cards{grid-template-columns:1fr}}
+  .notice{
+    display:flex;gap:16px;align-items:flex-start;
+    margin-top:clamp(32px,5vw,52px);padding:24px 26px;
+    background:rgba(124,28,30,.06);border-left:2px solid var(--red);
+  }
+  .notice b{font-size:11px;letter-spacing:.18em;color:var(--red);white-space:nowrap;padding-top:3px}
+  .notice p{margin:0;font-size:13px;color:#5a5c50;line-height:1.75}
+
+  /* ---------- table ---------- */
+  .table-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,6vw,76px);align-items:center}
+  .table-fig{aspect-ratio:4/3.1;min-height:360px}
+  @media (max-width:900px){.table-grid{grid-template-columns:1fr}}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+  .chips li{
+    font-size:12px;letter-spacing:.06em;color:#c6c2b2;
+    border:1px solid rgba(201,163,92,.28);padding:9px 18px;
+    transition:background .35s,color .35s,border-color .35s;
+  }
+  .chips li:hover{background:rgba(201,163,92,.14);color:var(--gold-2);border-color:var(--gold)}
+  .pair-note{font-size:12px;color:#858173;margin-top:22px;max-width:44ch}
+
+  /* ---------- gift ---------- */
+  .gift{background:linear-gradient(165deg,#f7f2e7,#eee6d5)}
+  .gift-wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center}
+  @media (max-width:900px){.gift-wrap{grid-template-columns:1fr}}
+  .gift-fig{aspect-ratio:4/3.4;min-height:380px}
+  .gift-fig::after{background:linear-gradient(180deg,transparent,rgba(40,30,15,.28))}
+  .occasions{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(150,116,58,.24);margin-top:34px;border:1px solid rgba(150,116,58,.2)}
+  .occ{background:#f5f0e5;padding:20px 14px;text-align:center}
+  .occ b{display:block;font-family:var(--serif);font-size:16px;font-weight:600;color:#1d231a;margin-bottom:4px}
+  .occ span{font-size:10.5px;letter-spacing:.14em;color:#8a8574}
+  @media (max-width:520px){.occasions{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- details ---------- */
+  .details-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,80px);align-items:start}
+  @media (max-width:900px){.details-grid{grid-template-columns:1fr}}
+  .spec{width:100%;border-collapse:collapse;font-size:13.5px}
+  .spec tr{border-bottom:1px solid rgba(201,163,92,.16)}
+  .spec th{
+    text-align:left;font-weight:400;color:#8f8b7d;font-size:11.5px;letter-spacing:.16em;
+    padding:17px 0;width:38%;vertical-align:top;white-space:nowrap;
+  }
+  .spec td{padding:17px 0;color:#dcd7c7;line-height:1.7}
+  .disclaimer{
+    margin-top:30px;font-size:11.5px;line-height:1.85;color:#7d7a6d;
+    border-top:1px solid rgba(201,163,92,.16);padding-top:20px;max-width:60ch;
+  }
+  .seal{
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+    width:132px;height:132px;border:1px solid var(--gold-dim);border-radius:50%;
+    color:var(--gold);text-align:center;margin-bottom:30px;gap:2px;
+  }
+  .seal b{font-family:var(--display);font-size:30px;letter-spacing:.06em;line-height:1}
+  .seal span{font-size:8.5px;letter-spacing:.22em;line-height:1.4}
+
+  /* ---------- contact ---------- */
+  .contact{background:linear-gradient(160deg,#5e1618,#7c1c1e 46%,#4b1012);color:var(--paper);overflow:hidden}
+  .contact::before{
+    content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+    background:radial-gradient(70% 60% at 84% 12%,rgba(233,207,152,.3),transparent 60%);
+  }
+  .contact-grid{position:relative;display:grid;grid-template-columns:1fr .92fr;gap:clamp(38px,6vw,80px);align-items:start}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+  .contact .eyebrow{color:var(--gold-2)}
+  .contact h2{color:#fbf6e9}
+  .contact p{color:#e5cfcb}
+  .contact .cn{color:rgba(245,230,200,.55)}
+  .form{display:grid;gap:16px}
+  .field{display:grid;gap:8px}
+  .field label{font-size:10.5px;letter-spacing:.2em;color:rgba(245,236,214,.7)}
+  .field input,.field select,.field textarea{
+    width:100%;padding:14px 16px;background:rgba(255,255,255,.055);
+    border:1px solid rgba(233,207,152,.28);color:#fdf8ec;
+    font-family:var(--sans);font-size:14px;font-weight:300;outline:none;
+    transition:border-color .3s,background .3s;
+  }
+  .field textarea{resize:vertical;min-height:96px}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    border-color:var(--gold);background:rgba(255,255,255,.1);
+  }
+  .field select{appearance:none;cursor:pointer}
+  .field select option{background:#4b1012;color:#fff}
+  .form .btn{border:1px solid var(--gold);background:var(--gold);color:#3d0f10;width:100%;margin-top:6px}
+  .form .btn:hover{background:var(--gold-2)}
+  .form-note{font-size:11px;color:rgba(245,236,214,.58);margin:0;line-height:1.7}
+  .form-done{
+    display:none;padding:18px;border:1px solid rgba(233,207,152,.4);
+    background:rgba(255,255,255,.08);font-size:13px;color:#fbf6e9;
+  }
+  .form-done.show{display:block}
+  .contact-side{padding-top:8px}
+  .c-line{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid rgba(233,207,152,.22);font-size:13px}
+  .c-line:last-of-type{border-bottom:1px solid rgba(233,207,152,.22)}
+  .c-line span{color:rgba(245,236,214,.62);letter-spacing:.1em;font-size:11px}
+  .c-line b{font-weight:400;color:#fbf6e9;font-family:var(--serif)}
+  .qualities{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .qualities span{font-size:10.5px;letter-spacing:.12em;padding:7px 14px;border:1px solid rgba(233,207,152,.3);color:rgba(245,236,214,.8)}
+
+  /* ---------- footer ---------- */
+  footer{background:#070907;color:#767268;padding:56px 0 40px;font-size:11.5px}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;padding-bottom:34px;border-bottom:1px solid rgba(201,163,92,.14)}
+  .foot-brand{font-family:var(--display);letter-spacing:.24em;font-size:18px;color:#d9d4c4}
+  .foot-brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.28em;color:#8d6c33;margin-top:10px}
+  .foot-links{display:flex;flex-wrap:wrap;gap:22px;font-size:11px;letter-spacing:.14em;color:#8b8779}
+  .foot-links a:hover{color:var(--gold-2)}
+  .warning{
+    margin-top:26px;padding:16px 18px;border:1px solid rgba(201,163,92,.16);
+    font-size:11px;line-height:1.8;color:#8f8a7b;letter-spacing:.01em;max-width:640px;
+  }
+  .copyright{margin-top:26px;font-size:10.5px;letter-spacing:.1em;color:#5e5b52}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <b>MOUTAI</b>
+    <span>1915 PANAMA</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#story">이야기</a>
+    <a href="#craft">공정</a>
+    <a href="#enjoy">즐기는 법</a>
+    <a href="#table">한우와 함께</a>
+    <a href="#details">제품 정보</a>
+  </nav>
+  <a class="nav-cta" href="#contact">정품 문의</a>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow reveal in">
+          <span>MOUTAI</span><i></i><span>PANAMA PACIFIC EXPOSITION</span><i></i><span>1915</span>
+        </div>
+        <h1 class="reveal in d1">백 년의 금빛을<br><span class="gold">한 잔에.</span></h1>
+        <p class="hero-sub reveal in d2">
+          1915년 파나마 만국박람회에서 세계가 인정한 향.<br>
+          중국 국주(国酒) 마오타이의 파나마 금상 기념주를<br>
+          한국의 식탁에서 만나보세요.
+        </p>
+        <div class="hero-meta reveal in d2">
+          <span>장향형 · 酱香型</span>
+          <span>53% vol</span>
+          <span>귀주성 마오타이진</span>
+        </div>
+        <div class="hero-actions reveal in d3">
+          <a class="btn btn-gold" href="#story">이야기 보기</a>
+          <a class="btn btn-ghost" href="#contact">정품 구매 문의</a>
+        </div>
+      </div>
+
+      <div class="stage reveal in d2" aria-hidden="true">
+        <div class="glow"></div>
+        <div class="ring r2"></div>
+        <div class="ring"></div>
+        <div class="ring r3"></div>
+        <div class="bottle">
+          <div class="cap"></div>
+          <div class="neck"></div>
+          <div class="body">
+            <div class="label">
+              <span class="y">1915</span>
+              <span class="ln"></span>
+              <span class="mt">MOUTAI</span>
+              <span class="kr">파나마 금상 기념주</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottle-base"></div>
+      </div>
+    </div>
+    <div class="scroll-cue"><i></i><span>SCROLL</span></div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section light" id="story">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="eyebrow">01 — The Story</div>
+          <h2>1915, 파나마에서<br>시작된 이름</h2>
+          <p class="lede">샌프란시스코에서 열린 파나마 태평양 만국박람회. 마오타이는 이 자리에서 금상을 수상하며 세계 주류 시장에 이름을 올렸습니다.</p>
+          <p>당시 심사위원들이 흙빛 도자기 병의 술을 열어보지 않았다는 이야기가 전해집니다. 전시 관계자가 술그릇을 일부러 떨어뜨렸고, 바닥에 퍼진 진한 향이 전시장을 가득 채웠습니다. 그날 이후 장향(酱香)은 세계가 이해하는 하나의 언어가 되었습니다.</p>
+          <p>백 년이 지난 지금도 마오타이는 마오타이진의 물, 기후, 그리고 장인의 손을 그대로 지킵니다. <span class="accent">파나마 금상 기념주</span>는 그 백 년의 이름을 한 병에 담은 술입니다.</p>
+          <div class="cn" style="margin-top:26px">一九一五 · 巴拿马太平洋万国博览会 金奖</div>
+        </div>
+        <div class="reveal d1">
+          <div class="frame">
+            <div class="figure story-fig">
+              <img src="assets/story-maotai-town.jpg" alt="마오타이진의 계곡 풍경" loading="lazy">
+            </div>
+          </div>
+          <div class="caption"><span>MAOTAI TOWN, GUIZHOU</span><span>赤水河</span></div>
+        </div>
+      </div>
+
+      <div class="stat-row reveal">
+        <div class="stat"><b>1915</b><span>파나마 만국박람회 금상</span></div>
+        <div class="stat"><b>100+</b><span>한 세기를 이어온 계보</span></div>
+        <div class="stat"><b>53</b><span>% vol · 장향형 백주</span></div>
+        <div class="stat"><b>5</b><span>년 이상 기장주 숙성</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT -->
+  <section class="section dark" id="craft">
+    <div class="wrap">
+      <div class="craft-head reveal">
+        <div class="eyebrow">02 — The Craft</div>
+        <h2>시간이 만드는 향</h2>
+        <p class="lede">마오타이의 장향은 하루아침에 완성되지 않습니다. 곡을 빚는 시기부터 술을 얻는 순서까지, 모든 과정이 달력과 함께 움직입니다.</p>
+      </div>
+
+      <div class="craft-body">
+        <div class="reveal">
+          <div class="frame">
+            <div class="figure craft-fig">
+              <img src="assets/craft-sorghum.jpg" alt="고량과 곡(曲)" loading="lazy">
+            </div>
+          </div>
+          <div class="caption"><span>RED SORGHUM &amp; QU</span><span>红缨子高粱 · 大曲</span></div>
+        </div>
+
+        <ol class="steps reveal d1">
+          <li class="step">
+            <b>01</b>
+            <div>
+              <h3>단오에 곡을 빚다</h3>
+              <p>단오(端午) 무렵 밀과 곡을 빚어 두고, 더위 속에서 발효시킵니다. 이 곡이 이후 모든 향의 바탕이 됩니다.</p>
+              <em>端午制曲</em>
+            </div>
+          </li>
+          <li class="step">
+            <b>02</b>
+            <div>
+              <h3>중양에 고량을 넣다</h3>
+              <p>가을 중양(重阳)에 붉은 고량을 투입합니다. 해마다 정해진 시기에 맞춰 원료를 넣는 것이 장향의 출발점입니다.</p>
+              <em>重阳下沙</em>
+            </div>
+          </li>
+          <li class="step">
+            <b>03</b>
+            <div>
+              <h3>아홉 번 찌고, 여덟 번 발효하다</h3>
+              <p>한 해 동안 아홉 번 찌고 여덟 번 발효하며 일곱 번 술을 얻습니다. 한 번의 증류로는 이 향이 나오지 않습니다.</p>
+              <em>九蒸 · 八酵 · 七取</em>
+            </div>
+          </li>
+          <li class="step">
+            <b>04</b>
+            <div>
+              <h3>최소 오 년을 기다린다</h3>
+              <p>빚은 술은 곧바로 출하지 않습니다. 최소 5년의 숙성을 거치며 자극은 사라지고 향은 짙어집니다.</p>
+              <em>基酒五年陈酿</em>
+            </div>
+          </li>
+          <li class="step">
+            <b>05</b>
+            <div>
+              <h3>향료 없이, 술로 술을 빚다</h3>
+              <p>다른 향료를 더하지 않고, 숙성된 기장주를 조합해 마지막 향을 완성합니다. 그래서 향이 인공적이지 않습니다.</p>
+              <em>以酒调酒</em>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENJOY -->
+  <section class="section light" id="enjoy">
+    <div class="wrap">
+      <div class="enjoy-head reveal">
+        <div class="eyebrow">03 — How to Enjoy</div>
+        <h2>53도, 천천히 즐기는 법</h2>
+        <p class="lede" style="margin-inline:auto">소주보다 높은 도수입니다. 한 잔을 오래, 작은 목소리로 나누는 방식이 마오타이를 가장 잘 즐기는 방법입니다.</p>
+      </div>
+
+      <div class="cards">
+        <div class="card reveal">
+          <div class="n">01</div>
+          <h3>온도</h3>
+          <p>상온 20–25℃. 차갑게 식히지 말고, 실온에서 향을 열어주세요.</p>
+          <span class="hint">20–25℃</span>
+        </div>
+        <div class="card reveal d1">
+          <div class="n">02</div>
+          <h3>작은 잔</h3>
+          <p>10ml 안팎의 작은 잔에 나누어 따릅니다. 한 번에 많이 따르지 않습니다.</p>
+          <span class="hint">10ml</span>
+        </div>
+        <div class="card reveal d2">
+          <div class="n">03</div>
+          <h3>향 먼저</h3>
+          <p>잔을 가볍게 흔들고 2–3분, 향을 먼저 느껴보세요. 시간이 지나며 향이 바뀝니다.</p>
+          <span class="hint">2–3 min</span>
+        </div>
+        <div class="card reveal d3">
+          <div class="n">04</div>
+          <h3>첫 모금과 여운</h3>
+          <p>첫 모금은 조금만, 혀 위에서 굴린 뒤 넘깁니다. 삼킨 뒤 몇 초 남는 향이 이 술의 진짜 끝입니다.</p>
+          <span class="hint">Slow &amp; low</span>
+        </div>
+      </div>
+
+      <div class="notice reveal">
+        <b>음주 안내</b>
+        <p>53도는 한국 소주보다 두 배 이상 높은 도수입니다. 빈속에 마시지 말고, 반드시 작은 잔으로 나누어 천천히 드세요. 음주 후 운전은 절대 금지입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE -->
+  <section class="section dark-2" id="table">
+    <div class="wrap">
+      <div class="table-grid">
+        <div class="reveal">
+          <div class="frame">
+            <div class="figure table-fig">
+              <img src="assets/table-hanwoo.jpg" alt="한우 구이" loading="lazy">
+            </div>
+          </div>
+          <div class="caption"><span>HANWOO &amp; JANGHYANG</span><span>한우 · 酱香</span></div>
+        </div>
+        <div class="reveal d1">
+          <div class="eyebrow">04 — At the Table</div>
+          <h2>한우와 장향,<br>잘 어울리는 이유</h2>
+          <p class="lede">장향의 짙은 향과 긴 여운은 기름진 육류와 잘 맞습니다. 향이 고기의 기름을 씻어내고, 고기의 감칠맛이 다시 술의 여운을 끌어올립니다.</p>
+          <p>한국의 식탁에서도 같은 원리가 적용됩니다. 한우 구이, 양념 갈비처럼 기름과 양념이 있는 요리에 작은 잔으로 함께해 보세요.</p>
+          <ul class="chips">
+            <li>한우 등심 구이</li>
+            <li>양념 갈비</li>
+            <li>표고·송이 구이</li>
+            <li>된장 기반 반찬</li>
+          </ul>
+          <p class="pair-note">* 기름이 많은 요리일수록 잔을 작게, 속도는 천천히. 매운맛이 강한 요리와는 함께 즐기지 않는 편이 좋습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT -->
+  <section class="section gift light" id="gift">
+    <div class="wrap gift-wrap">
+      <div class="reveal">
+        <div class="eyebrow">05 — The Gift</div>
+        <h2>선물에는<br>이야기가 남습니다</h2>
+        <p class="lede">설, 추석, 승진, 개업, 그리고 중요한 거래. 파나마 금상 기념주는 화려함보다 ‘백 년의 이름’으로 말합니다.</p>
+        <p>받는 분이 술을 잘 모르더라도 설명은 간단합니다. “1915년 파나마 박람회에서 금상을 받은 술”이라는 한 문장이면 충분합니다.</p>
+        <div class="occasions">
+          <div class="occ"><b>설</b><span>NEW YEAR</span></div>
+          <div class="occ"><b>추석</b><span>CHUSEOK</span></div>
+          <div class="occ"><b>승진</b><span>PROMOTION</span></div>
+          <div class="occ"><b>개업</b><span>OPENING</span></div>
+          <div class="occ"><b>결혼</b><span>WEDDING</span></div>
+          <div class="occ"><b>비즈니스</b><span>BUSINESS</span></div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="frame">
+          <div class="figure gift-fig">
+            <img src="assets/gift-box.jpg" alt="선물 패키지" loading="lazy">
+          </div>
+        </div>
+        <div class="caption"><span>GIFT EDITION</span><span>礼盒</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="section dark" id="details">
+    <div class="wrap details-grid">
+      <div class="reveal">
+        <div class="seal">
+          <b>1915</b>
+          <span>PANAMA<br>GOLD MEDAL</span>
+        </div>
+        <div class="eyebrow">06 — Details</div>
+        <h2>제품 정보</h2>
+        <p class="lede">마오타이 파나마 금상 기념주는 1915년 금상 수상을 기억하는 에디션입니다. 판매 버전에 따라 용량과 패키지가 다를 수 있습니다.</p>
+      </div>
+
+      <div class="reveal d1">
+        <table class="spec">
+          <tbody>
+            <tr><th>제품명</th><td>마오타이 파나마 금상 기념주<br><span class="cn">茅台巴拿马金奖纪念酒</span></td></tr>
+            <tr><th>주종</th><td>장향형 백주 (酱香型白酒)</td></tr>
+            <tr><th>주도</th><td>53% vol</td></tr>
+            <tr><th>원산지</th><td>중국 귀주성 런화이시 마오타이진</td></tr>
+            <tr><th>원료</th><td>고량, 밀, 수(水)</td></tr>
+            <tr><th>숙성</th><td>기장주 최소 5년 이상</td></tr>
+            <tr><th>용량</th><td>판매 버전에 따라 상이 (500ml 기준)</td></tr>
+            <tr><th>보관</th><td>상온, 직사광선을 피하고 뉘어 보관</td></tr>
+          </tbody>
+        </table>
+        <p class="disclaimer">
+          본 페이지는 제품 소개를 위한 것으로, 실제 제품의 사양·패키지·가격은 정품 판매 채널의 기준을 따릅니다.
+          국내에서는 반드시 정식 수입·승인 채널을 통해 구매하시기 바랍니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">07 — Contact</div>
+        <h2>정품 구매 및<br>도매 문의</h2>
+        <p>개인 구매, 선물 패키지, 비즈니스 대량 주문까지. 남겨주신 내용을 확인한 후 순서대로 안내드립니다.</p>
+        <p class="cn" style="margin-top:20px">MOUTAI · 1915 PANAMA GOLD MEDAL EDITION</p>
+
+        <div class="c-line"><span>구매 유형</span><b>개인 · 선물 · 도매</b></div>
+        <div class="c-line"><span>상담 시간</span><b>평일 10:00 – 18:00 (KST)</b></div>
+        <div class="c-line"><span>정품 확인</span><b>정식 수입 채널 기준</b></div>
+
+        <div class="qualities">
+          <span>정품 보증</span><span>선물 포장</span><span>도매 상담</span><span>기업 대응</span>
+        </div>
+      </div>
+
+      <div class="reveal d1">
+        <form class="form" id="inquiryForm">
+          <div class="field">
+            <label for="name">성함 / 업체명</label>
+            <input id="name" name="name" type="text" placeholder="예) 홍길동" required>
+          </div>
+          <div class="field">
+            <label for="phone">연락처</label>
+            <input id="phone" name="phone" type="tel" placeholder="010-0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="type">문의 유형</label>
+            <select id="type" name="type">
+              <option>개인 구매</option>
+              <option>선물 / 패키지</option>
+              <option>도매 / 기업</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="msg">남기실 말씀</label>
+            <textarea id="msg" name="msg" placeholder="수량, 희망 시기, 궁금하신 점을 남겨주세요."></textarea>
+          </div>
+          <button class="btn" type="submit">문의 남기기</button>
+          <p class="form-note">* 데모 페이지입니다. 실제 문의 접수를 위해서는 상담 채널(폼 백엔드 또는 카카오톡) 연결이 필요합니다.</p>
+          <div class="form-done" id="formDone">문의가 접수되었습니다. 확인 후 순서대로 연락드리겠습니다. 감사합니다.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        MOUTAI
+        <small>1915 PANAMA GOLD MEDAL EDITION</small>
+      </div>
+      <nav class="foot-links">
+        <a href="#story">이야기</a>
+        <a href="#craft">공정</a>
+        <a href="#enjoy">즐기는 법</a>
+        <a href="#details">제품 정보</a>
+        <a href="#contact">정품 문의</a>
+      </nav>
+    </div>
+    <div class="warning">
+      지나친 음주는 건강을 해칩니다. 임산부의 음주는 태아에 해를 끼칠 수 있습니다.
+      19세 미만 청소년에게 주류를 판매·제공할 수 없습니다. 음주 후 운전은 금지됩니다.
+    </div>
+    <div class="copyright">© 2026 MOUTAI PANAMA EDITION — 본 페이지는 제품 소개용 데모입니다.</div>
+  </div>
+</footer>
+
+<script>
+  // nav state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // reveal on scroll
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold: 0.16, rootMargin: '0px 0px -8% 0px'});
+    items.forEach(el => io.observe(el));
+  } else {
+    items.forEach(el => el.classList.add('in'));
+  }
+
+  // demo form
+  const form = document.getElementById('inquiryForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formDone').classList.add('show');
+    form.querySelector('button').textContent = '접수 완료';
+  });
+</script>
+</body>
+</html>
