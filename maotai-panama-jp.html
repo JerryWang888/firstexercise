@@ -65,7 +65,7 @@
   }
   .brand-txt{font-size:13px;letter-spacing:.22em;line-height:1.4}
   .brand-txt small{display:block;font-family:var(--latin);font-size:10px;letter-spacing:.3em;color:var(--gold-dim)}
-  .nav-links{display:flex;gap:34px;font-size:12.5px;letter-spacing:.2em;color:var(--paper-dim)}
+  .nav-links{display:flex;gap:34px;font-size:12.5px;letter-spacing:.2em;color:var(--paper-dim);margin-left:auto}
   .nav-links a{position:relative;padding-bottom:6px}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .4s var(--ease)}
   .nav-links a:hover{color:var(--paper)}
@@ -76,6 +76,13 @@
   }
   .nav-cta:hover{background:var(--red);border-color:var(--red)}
   @media (max-width:900px){ .nav-links{display:none} .nav-cta{display:none} }
+
+  /* 言語切替 */
+  .lang-switch{display:flex;align-items:center;gap:2px;flex:0 0 auto;margin-right:20px;padding:4px;border-radius:999px;background:rgba(12,10,8,.72);border:1px solid rgba(201,162,84,.42);backdrop-filter:blur(10px);z-index:90}
+  .lang-switch a{font-size:10.5px;letter-spacing:.06em;line-height:1;padding:6px 9px;border-radius:999px;color:#b3a088;text-decoration:none;white-space:nowrap;transition:color .25s,background .25s}
+  .lang-switch a:hover{color:var(--gold,#c9a254)}
+  .lang-switch a.active{background:rgba(201,162,84,.22);color:#f2e8d5}
+  @media (max-width:900px){ .nav-links{display:none} .nav-cta{display:none} .lang-switch{margin-right:12px} .lang-switch a{padding:5px 7px;font-size:9.5px} }
 
   /* ---------- hero ---------- */
   .hero{height:100svh;min-height:620px;display:flex;align-items:flex-end;overflow:hidden}
@@ -295,6 +302,12 @@
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
+  <div class="lang-switch" role="group" aria-label="言語 / Language">
+    <a href="index.html">中文</a>
+    <a href="moutai-panama.html">EN</a>
+    <a href="maotai-panama-ko.html">한국어</a>
+    <a href="maotai-panama-jp.html" class="active" aria-current="page">日本語</a>
+  </div>
   <a class="brand" href="#top">
     <span class="brand-mark">茅</span>
     <span class="brand-txt">巴拿馬金賞紀念酒<small>MAOTAI PANAMA</small></span>
